@@ -1,0 +1,31 @@
+{
+  "name": "create-vue3-parcel",
+  "version": "1.0.0",
+  "description": "Scaffolding vue3 with parcel",
+  "type": "module",
+  "bin": {
+    "vue-parcel": "cli.js"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishin-pie/create-vue3-parcel.git"
+  },
+  "keywords": [
+    "vue",
+    "typescript",
+    "parcel"
+  ],
+  "author": "Ishin Vin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ishin-pie/create-vue3-parcel/issues"
+  },
+  "homepage": "https://github.com/ishin-pie/create-vue3-parcel#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "commander": "^9.2.0",
+    "cross-spawn": "^7.0.3",
+    "fs-extra": "^10.1.0"
+  }
+}
