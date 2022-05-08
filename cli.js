@@ -38,11 +38,14 @@ program
 
             const template = 'ishin-pie/vue-parcel-boilerplate'
 
-            initit({ name, template })
+            initit({ name: args, template })
                 .then(res => {
                     log(chalk.green('Initializing completed!'))
                     log('To get started')
-                    log(`cd ${name}`)
+                    if (args !== '.') {
+                        log(`cd ${name}`)
+                    }
+                    log('npm run serve')
                     process.exit(0)
                 })
                 .catch(err => {

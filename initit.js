@@ -34,9 +34,6 @@ const gitInit = () => {
 const getTar = ({ user, repo, path = '', name, depth }) => {
     const url = `https://codeload.github.com/${user}/${repo}/tar.gz/main`;
     let cmd = `curl ${url} | tar -xz -C ${name} --strip=${depth} ${repo}-main/${path}`;
-    if (basename(process.cwd()) === name) {
-        cmd = `curl ${url} | tar -xz -C . --strip=${depth} ${repo}-main/${path}`;
-    }
     exec(cmd, { stdio: 'inherit' });
 };
 
@@ -50,18 +47,24 @@ const create = async (opts = {}) => {
         throw new Error('template argument required');
         return;
     }
+    const { name: inputName } = opts
 
     const dirname = _resolve(opts.name);
     const name = basename(dirname);
     const [user, repo, ...paths] = opts.template.split('/');
     const depth = paths.length + 1;
-    console.log(`depth (paths.length): ${depth}`);
+    console.log(`dirname: ${dirname}`)
+    console.log(`name: ${name}`)
+    // console.log(`depth (paths.length): ${depth}`);
 
-    fsx.ensureDirSync(name);
+
+    if (inputName !== '.') {
+        fsx.ensureDirSync(name);
+    }
 
     getTar(
         Object.assign({}, opts, {
-            name,
+            inputName,
             user,
             repo,
             path: paths.join('/'),
@@ -75,7 +78,7 @@ const create = async (opts = {}) => {
     );
 
     const pkg = Object.assign({}, templatePkg, {
-        name,
+        name: (inputName === '.') ? basename(process.cwd()) : name,
         version: '1.0.0'
     });
 
