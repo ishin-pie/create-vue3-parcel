@@ -16,11 +16,3 @@ Initial vue + parcel + typescript
    ```sh
    vue-parcel [project-name]
    ```
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-## Contact
-
-Ishin Vin - ishin.pie@gmail.com
