@@ -1,6 +1,6 @@
 {
   "name": "create-vue3-parcel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scaffolding vue3 with parcel",
   "type": "module",
   "bin": {
